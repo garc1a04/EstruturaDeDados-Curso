@@ -15,6 +15,19 @@ public class LinkedList {
 		tamanho = 1;
 	}
 	
+	public Node get(int index) {
+		if(index < 0 || index >= tamanho) {
+			return null;
+		}
+		
+		Node temp = head;
+		for(int i = 0; i < index;i++) {
+			temp = temp.getNext();
+		}
+		
+		return temp;
+	}
+	
 	public void append(int valor) {
 		Node novoNode = new Node(valor);
 		
@@ -29,13 +42,24 @@ public class LinkedList {
 		tamanho++;
 	}
 	
-	public Node removeLast() {
+	public void prepend(int valor) {
+		Node novoNode = new Node(valor);
+		
 		if(tamanho == 0) {
-			head = null;
-			tail = null;
+			head = novoNode;
+			tail = novoNode;
 			
-			return null;
+		} else {
+			novoNode.setNext(head);
+			head = novoNode;
+			
 		}
+		tamanho++;
+	}
+	
+	public Node removeLast() {
+		if(tamanho == 0)
+			return null;
 		
 		Node pre = head, temp = head;
 		
@@ -47,6 +71,27 @@ public class LinkedList {
 		tail = pre;
 		tail.setNext(null);
 		tamanho--;
+		
+		if(tamanho == 0) {
+			head = null;
+			tail = null;
+		}
+		
+		return temp;
+	}
+	
+	public Node removeFirst() {
+		if(tamanho == 0) 
+			return null;
+		
+		Node temp = head;
+		
+		head = head.getNext();
+		temp.setNext(null);
+		tamanho--;
+		
+		if(tamanho == 0) 
+			tail = null;
 		
 		return temp;
 	}
@@ -61,11 +106,11 @@ public class LinkedList {
 		System.out.println();
 	}
 	
-	public int getInicio() {
+	public int getHead() {
 		return head.getValor();
 	}
 
-	public int getFim() {
+	public int getTail() {
 		return tail.getValor();
 	}
 
