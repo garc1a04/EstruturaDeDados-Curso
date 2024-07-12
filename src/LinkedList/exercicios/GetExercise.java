@@ -11,13 +11,11 @@ public class GetExercise {
 
 
         System.out.println(myLinkedList.get(3).getValor());
-
-
+        
         /*
             EXPECTED OUTPUT:
             ----------------
             3
-
         */
 	}
 }

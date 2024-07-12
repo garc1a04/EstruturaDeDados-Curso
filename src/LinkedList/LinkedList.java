@@ -28,6 +28,43 @@ public class LinkedList {
 		return temp;
 	}
 	
+	public boolean set(int index, int valor) {
+		Node temp = get(index);
+		
+		if(temp != null) {
+			temp.setValor(valor);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean insert(int index, int valor) {
+		if(index < 0 || index > tamanho) 
+			return false;
+		
+		if(index == 0) {
+			prepend(valor);
+			return true;
+		}
+		
+		if(index == tamanho) {
+			append(valor);
+			return true;
+		}
+		
+		Node novoNode = new Node(valor);
+		Node temp = get(index - 1);
+		
+		novoNode.setNext(temp.getNext());
+		temp.setNext(novoNode);
+		
+		tamanho++;
+		
+		return true;
+	}
+	
 	public void append(int valor) {
 		Node novoNode = new Node(valor);
 		
