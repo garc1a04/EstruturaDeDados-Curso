@@ -117,6 +117,20 @@ public class LinkedList {
 		return temp;
 	}
 	
+	public Node remove(int index) {
+		if(index < 0 || index >= tamanho) return null;
+		if(index == 0) return removeFirst();
+		if(index == tamanho-1) return removeLast();
+		
+		Node prev = get(index-1);
+		Node temp = prev.getNext();
+		
+		prev.setNext(temp.getNext());
+		temp.setNext(null);
+		tamanho--;
+		return temp;
+	}
+	
 	public Node removeFirst() {
 		if(tamanho == 0) 
 			return null;
@@ -133,6 +147,20 @@ public class LinkedList {
 		return temp;
 	}
 	
+	public void reverse() {
+		Node temp = head;
+		head = tail;
+		tail = temp;
+		
+		Node depois = temp.getNext();
+		Node antes = null;
+		for(int i = 0; i < tamanho;i++) {
+			depois = temp.getNext();
+			temp.setNext(antes);
+			antes = temp;
+			temp = depois;
+		}
+	}
 	public void printList() {
 		Node temp = head;
 		
