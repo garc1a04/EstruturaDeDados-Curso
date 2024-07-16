@@ -1,0 +1,73 @@
+
+// THIS GOES IN YOUR MAIN CLASS TO TEST YOUR CODE:
+// -----------------------------------------------
+
+package datastructures.stack;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Stack myStack = new Stack(4);
+
+        myStack.getTop();
+        myStack.getHeight();
+
+        System.out.println("\nStack:");
+        myStack.printStack();
+
+        /*
+            EXPECTED OUTPUT:
+            ----------------
+            Top: 4
+            Height: 1
+            
+            Stack:
+            4
+
+        */
+
+    }
+
+}
+
+
+
+
+
+// THIS CODE GOES IN YOUR STACK CLASS:
+// -----------------------------------
+      
+package datastructures.stack;
+
+public class Stack {
+
+	// CREATE CLASS VARIABLES, NODE CLASS, AND CONSTRUCTOR HERE//
+	//                                                         //
+	//                                                         //
+	//                                                         //
+	//                                                         //
+	/////////////////////////////////////////////////////////////
+
+    public void printStack() {
+        Node temp = top;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
+    public void getTop() {
+        if (top == null) {
+            System.out.println("Top: null");
+        } else {
+            System.out.println("Top: " + top.value);
+        }
+    }
+
+    public void getHeight() {
+        System.out.println("Height: " + height);
+    }
+
+}
+
