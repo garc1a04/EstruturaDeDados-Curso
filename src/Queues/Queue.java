@@ -29,8 +29,28 @@ public class Queue {
 		length++;
 	}
 	
+	public Node dequeue() {
+		if(length == 0) return null;
+		
+		Node temp = first;
+		
+		if(length == 1) {
+			first = null;
+			last = null;
+			
+		}else {
+			first = first.getNext();
+			temp.setNext(null);
+			
+		}
+		
+		length--;
+		
+		return temp;
+	}
+	
 	public void printQueue() {
-		Node temp = first1 ;
+		Node temp = first;
 		
 		while(temp != null) {
 			System.out.println(temp.getValue());
